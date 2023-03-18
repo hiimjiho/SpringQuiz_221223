@@ -62,7 +62,7 @@ public class Lesson01Quiz02RestController {
 	}
 	
 	@RequestMapping("/2")
-	// http://localhost:8080/lesson01/quiz02/2
+	// http://localhost/lesson01/quiz02/2
 	public List<Board> quiz02_2(){
 		List<Board> result = new ArrayList<>();
 		Board board = new Board();
@@ -75,11 +75,13 @@ public class Lesson01Quiz02RestController {
 		board.setTitle("헐 대박");
 		board.setUser("bada");
 		board.setContent("오늘 목요일이었어..");
+		result.add(board);
 		
 		board = new Board();
 		board.setTitle("헐 대박");
 		board.setUser("bada");
 		board.setContent("오늘 목요일이었어..");
+		result.add(board);
 		return result;	// List => JSON String
 		
 	}
