@@ -19,7 +19,7 @@ public class Lesson01Quiz01Controller {
 		return text;
 	}
 	
-	// http://localhost:8080/lesson01/quiz01/2
+	// http://localhost/lesson01/quiz01/2
 	@RequestMapping("/2")
 	@ResponseBody
 	public Map<String, Object> quiz01_2(){
