@@ -39,7 +39,7 @@ public class RealEstateBO {
 //	type : 월세
 //	price : 100000
 //	rentPrice : 120
-	public int addEstateAsFiled(int id, String address, int area, String type, int price, int rentPrice) {
-		return realEstateMapper.insertEstateAsFiled(id, address, area, type, price, rentPrice);
+	public int addEstateAsFiled(int realtorId, String address, int area, String type, int price, int rentPrice) {
+		return realEstateMapper.insertEstateAsFiled(realtorId, address, area, type, price, rentPrice);
 	}
 }

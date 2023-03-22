@@ -23,7 +23,7 @@ public interface RealEstateMapper {
 	public int insertEstate(RealEstate realEstate);
 	
 	public int insertEstateAsFiled(
-			@Param("id") int id,
+			@Param("realtorId") int realtorId,
 			@Param("address") String address,
 			@Param("area") int area,
 			@Param("type") String type,
