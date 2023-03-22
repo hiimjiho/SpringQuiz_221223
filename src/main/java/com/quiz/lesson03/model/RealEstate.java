@@ -68,5 +68,4 @@ public class RealEstate {
 		this.updatedAt = updatedAt;
 	}
 	
-	
 }
