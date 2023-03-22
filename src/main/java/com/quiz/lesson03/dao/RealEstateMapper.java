@@ -7,5 +7,5 @@ import com.quiz.lesson03.model.RealEstate;
 
 @Repository
 public interface RealEstateMapper {
-	public RealEstate selectRealEstateByRentPrice(@Param("rentPrice") Integer rentPrice);
+	public RealEstate selectRealEstate(@Param("id") int id);
 }

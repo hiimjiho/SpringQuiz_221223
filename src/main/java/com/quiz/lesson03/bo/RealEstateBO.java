@@ -1,7 +1,5 @@
 package com.quiz.lesson03.bo;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +13,6 @@ public class RealEstateBO {
 	
 	// input: id output: RealEstate
 	public RealEstate getRealEstateById(int id) {
-		
+		return realEstateMapper.selectRealEstate(id);
 	}
 }
