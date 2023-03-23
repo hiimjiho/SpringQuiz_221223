@@ -39,7 +39,16 @@ public class RealEstateBO {
 //	type : 월세
 //	price : 100000
 //	rentPrice : 120
-	public int addEstateAsFiled(int realtorId, String address, int area, String type, int price, int rentPrice) {
+	public int addEstateAsFiled(int realtorId, String address, int area, String type, int price, Integer rentPrice) {
 		return realEstateMapper.insertEstateAsFiled(realtorId, address, area, type, price, rentPrice);
+	}
+	
+	// input : id, price		output: int
+	public int updateEstateAsPriceById(int id, int price, String type) {
+		return realEstateMapper.updateEstateAsPriceById(id, price, type);
+	}
+	
+	public void deleteRealEstateById(int id) {
+		realEstateMapper.deleteRealEstateById(id);
 	}
 }

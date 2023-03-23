@@ -32,11 +32,9 @@ public class Lesson03Quiz02RestController {
 	// http://localhost/lesson03/quiz02/2?realtor_id=5
 	@RequestMapping("/2")
 	public String quiz02_2(
-			@RequestParam("realtor_id") int realtor_id) {
+			@RequestParam("realtor_id") int realtorId) {
 		int rowCount = realEstateBO.addEstateAsFiled(5, "썅떼빌리버 오피스텔 814호", 45, "월세", 100000, 120);
 		return "성공한 행의 개수:" + rowCount;
 	}
 		
-		
-	
 }
