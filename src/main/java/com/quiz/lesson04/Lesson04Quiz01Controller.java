@@ -33,20 +33,24 @@ public class Lesson04Quiz01Controller {
 		return "lesson04/afterAddSeller";
 	}
 	// http://localhost/lesson04/quiz01/seller_info
+	// http://localhost/lesson04/quiz01/seller_info?id=1
 	@GetMapping("/seller_info")
-	public String getLatestUserView(Model model) {
-		Seller seller = sellerBO.getLatestSeller();
+	public String getLatestUserView(
+			@RequestParam(value="id", required=false) Integer id,
+			Model model) {
+		Seller seller = null;
+		if (id == null) {
+			// 최신 가입자를 가져온다.
+			seller = sellerBO.getLatestSeller();
+			
+		} else {
+			// id에 해당하는 사용자를 가져온다.
+			seller = sellerBO.getSellerById(id);
+		}
+		
+		// DB Insert
 		model.addAttribute("seller", seller);
 		return "/lesson04/getLatestUser";
 	}
 	
-	// http://localhost/lesson04/quiz01/seller_info?id=1
-	@GetMapping("/seller_info")
-	public String getUserView(
-			@RequestParam("id") int id,
-			Model model) {
-		Seller seller = sellerBO.getLatestSeller();
-		model.addAttribute("seller", seller);
-		return "/lesson04/getLatesUser";
-	}
 }

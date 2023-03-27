@@ -19,4 +19,8 @@ public class SellerBO {
 		return sellerMapper.selectLatestSeller();
 	}
 	
+	public Seller getSellerById(int id) {
+		return sellerMapper.selectSellerById(id);
+	}
+	
 }
