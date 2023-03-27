@@ -18,4 +18,5 @@ public class SellerBO {
 	public Seller getLatestSeller() {
 		return sellerMapper.selectLatestSeller();
 	}
+	
 }

@@ -39,5 +39,14 @@ public class Lesson04Quiz01Controller {
 		model.addAttribute("seller", seller);
 		return "/lesson04/getLatestUser";
 	}
+	
 	// http://localhost/lesson04/quiz01/seller_info?id=1
+	@GetMapping("/seller_info")
+	public String getUserView(
+			@RequestParam("id") int id,
+			Model model) {
+		Seller seller = sellerBO.getLatestSeller();
+		model.addAttribute("seller", seller);
+		return "/lesson04/getLatesUser";
+	}
 }

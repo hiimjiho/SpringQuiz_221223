@@ -9,14 +9,15 @@ import com.quiz.lesson03.model.RealEstate;
 
 @Repository
 public interface RealEstateMapper {
-	public RealEstate selectRealEstate(@Param("id") int id);
 	
-	public List<RealEstate> selectRealEstateListByRentPrice(int rentPrice);
+	public RealEstate selectRealEstateById(int id);
+	
+	public List<RealEstate> selectRealEstateByRt(int rentPrice);
 	
 	// MyBatis는 파라미터를 단 한개만 보낼 수 있다.
 	// 파라미터가 2개 이상일 때는 하나의 맵으로 만들어서 보내야한다. 
 	// @Param을 사용하면 하나의 맵으로 만들어준다.
-	public List<RealEstate> selectRealEstateListByAreaPrice(
+	public List<RealEstate> selectRealEstateByArea(
 			@Param("area") int area,
 			@Param("price") int price);
 	

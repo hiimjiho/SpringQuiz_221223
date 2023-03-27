@@ -3,66 +3,67 @@
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.quiz.lesson03.dao.RealEstateMapper">
-	<select id="selectRealEstate" parameterType="int"
-		resultType="com.quiz.lesson03.model.RealEstate">
+	
+	<select id="selectRealEstateById" resultType="com.quiz.lesson03.model.RealEstate">
 		SELECT
-		`id`
-		,`realtorId`
-		,`address`
-		,`area`
-		,`type`
-		,`price`
-		,`rentPrice`
-		,`createdAt`
-		,`updatedAt`
+			`id`
+			,`realtorId`
+			,`address`
+			,`area`
+			,`type`
+			,`price`
+			,`rentPrice`
+			,`createdAt`
+			,`updatedAt`
 		FROM
-		`real_estate`
+			`real_estate`
 		WHERE
-		`id` = #{id}
+			`id` = #{id}
 	</select>
-
-	<select id="selectRealEstateListByRentPrice" parameterType="int"
-		resultType="com.quiz.lesson03.model.RealEstate">
-		SELECT
-
-		`id`
-		,`realtorId`
-		,`address`
-		,`area`
-		,`type`
-		,`price`
-		,`rentPrice`
-		,`createdAt`
-		,`updatedAt`
-		FROM
-		`real_estate`
-		WHERE
-		<![CDATA[
-		`rentPrice` < #{rentPrice}
-		]]>
-	</select>
-
-	<select id="selectRealEstateListByAreaPrice" parameterType="map" resultType="com.quiz.lesson03.model.RealEstate">
-		SELECT
-
-		`id`
-		,`realtorId`
-		,`address`
-		,`area`
-		,`type`
-		,`price`
-		,`rentPrice`
-		,`createdAt`
-		,`updatedAt`
-		FROM
-		`real_estate`
-		WHERE
-		<![CDATA[
-		`type` = '매매'
-		AND `area` >= #{area}
-		AND `price` <= #{price}
-		]]>
 		
+	
+	<select id="selectRealEstateByRt" resultType="com.quiz.lesson03.model.RealEstate">
+	SELECT
+			`id`
+			,`realtorId`
+			,`address`
+			,`area`
+			,`type`
+			,`price`
+			,`rentPrice`
+			,`createdAt`
+			,`updatedAt`
+		FROM
+			`real_estate`
+		WHERE
+			  <![CDATA[
+      			  `rentPrice` < #{rentPrice}
+      		  ]]>
+		
+	</select>
+
+	<select id="selectRealEstateByArea" parameterType="map" resultType="com.quiz.lesson03.model.RealEstate">
+		SELECT
+			`id`
+			,`realtorId`
+			,`address`
+			,`area`
+			,`type`
+			,`price`
+			,`rentPrice`
+			,`createdAt`
+			,`updatedAt`
+		FROM
+			`real_estate`
+		WHERE
+			  <![CDATA[
+      			  	`type` = '매매'
+      				AND
+      				`area` >= #{area}
+      				AND
+      				`price` <= #{price}
+      		  ]]>
+			ORDER BY `id` DESC;
 	</select>
 	
 	<insert id="insertEstate" parameterType="com.quiz.lesson03.model.RealEstate">

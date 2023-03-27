@@ -14,18 +14,18 @@ public class RealEstateBO {
 	private RealEstateMapper realEstateMapper;
 
 	// input: id output: RealEstate
-	public RealEstate getRealEstateById(int id) {
-		return realEstateMapper.selectRealEstate(id);
+	public RealEstate insertRealEstateById(int id) {
+		return realEstateMapper.selectRealEstateById(id) ;
 	}
-
+	
 	// input: rent_price output: List<RealEstate>
-	public List<RealEstate> getRealEstateListByRentPrice(int rentPrice) {
-		return realEstateMapper.selectRealEstateListByRentPrice(rentPrice);
+	public List<RealEstate> insertRealEstateByRt(int rentPrice){
+		return realEstateMapper.selectRealEstateByRt(rentPrice);
 	}
 	
 	// input : area, price 		output: List<RealEstate>
-	public List<RealEstate> getRealEstateListByAreaPrice(int area, int price){
-		return realEstateMapper.selectRealEstateListByAreaPrice(area, price);
+	public List<RealEstate> insertRealEstateByArea(int area, int price){
+		return realEstateMapper.selectRealEstateByArea(area, price);
 	}
 	
 	
