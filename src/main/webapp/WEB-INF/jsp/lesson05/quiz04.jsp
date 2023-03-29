@@ -26,14 +26,25 @@
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach items="${members}" var="mem" vatStatus="status">
+				<c:forEach items="${members}" var="mem" varStatus="status">
 					<tr>
 						<td>${status.count}</td>
 						<td>${mem.name}</td>
-						<td>${mem.phoneNumber}</td>
-						<td>${mem.nationality}</td>
-						<td></td>
-						<td></td>
+						<c:choose>
+							<c:set var="phoneNumber" value="${mem.phoneNumber}" />
+							<c:when test="${fn:startsWith(phoneNumber,'100')}">
+								<td>${mem.phoneNumber}</td>
+							</c:when> 
+							<c:otherwise>
+								유효하지 않는 전화번호
+							</c:otherwise>
+						</c:choose>
+						<c:set var="nationality" value="${mem.nationality}" />
+						<td>${fn:replace(nationality, "삼국시대", "삼국-")}</td>
+						<c:set var="email" value="${mem.email}" />
+						<td><b>${fn:split(email, '@')[0]}</b>
+						${fn:split(email, '@')[1]}</td>
+						<td>${mem.introduce}</td>
 					</tr>
 				</c:forEach>
 			</tbody>
