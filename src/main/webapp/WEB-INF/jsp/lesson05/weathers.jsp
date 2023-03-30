@@ -38,20 +38,36 @@
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach items="${weathers}" var="${weather}" >
+					<c:forEach items="${weathers}" var="weather" >
 						<tr>
-							<td>${weather.date}</td>
-							<td>${weather.weather}</td>
+							<fmt:formatDate value="${weahter.date}" pattern="yyy년 MM월 dd일" var="weatherDate"/><td>${weatherDate}</td>
+						<c:choose>
+							<c:when test="${weather.weather == '맑음'}">
+								<td><img src="/img/sunny.jpg" alt="맑음"></td>
+							</c:when>
+							<c:when test="${weather.weather == '구름조금'}">
+								<td><img src="/img/partlyCloudy.jpg" alt="구름조금"></td>
+							</c:when>
+							<c:when test="${weather.weather == '흐림'}">
+								<td><img src="/img/cloudy.jpg" alt="흐림"></td>
+							</c:when>
+							<c:when test="${weather.weather == '비'}">
+								<td><img src="/img/rainy.jpg" alt="비"></td>
+							</c:when>
+						</c:choose>
 							<td>${weather.temperatures}</td>
 							<td>${weather.precipitation}</td>
 							<td>${weather.microDust}</td>
 							<td>${weather.windSpeed}</td>
+						
 						</tr>
 					</c:forEach>
 				</tbody>
 			</table>
 		</section>
-		<footer class="bg-success"></footer>
+		<footer class="bg-success d-flex">
+			<img src="/img/logo.jpg" alt="기상청 로고"> (07062) 서울시 동작구 여의대방로16길 61
+		</footer>
 	</div>
 </body>
 </html>

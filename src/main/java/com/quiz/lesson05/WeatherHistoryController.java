@@ -16,12 +16,12 @@ public class WeatherHistoryController {
 	
 	@Autowired WeatherHistoryBO weatherHistoryBO;
 	
-	@GetMapping("/weatherhistory")
+	@GetMapping("/weather_history")
 	public String quiz05(
 			Model model) {
 		List<WeatherHistory> weatherHistoryList = weatherHistoryBO.getWeatherHistory();
 		model.addAttribute("weathers", weatherHistoryList);
-		return "/lesson05/weather";
+		return "lesson05/weathers";
 	}
 	
 	
