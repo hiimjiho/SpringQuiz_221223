@@ -24,5 +24,9 @@ public class WeatherHistoryController {
 		return "lesson05/weathers";
 	}
 	
+	@GetMapping("/add_weather_view")
+	public String addWeahterView() {
+		return "lesson05/addWeather";
+	}
 	
 }
