@@ -15,4 +15,8 @@ public class WeatherHistoryBO {
 	public List<WeatherHistory> getWeatherHistory() {
 		return weatherHistoryMapper.selectWeatherHistory();
 	}
+	
+	public void getWeatherHistory(WeatherHistory weatherhistory) {
+		
+	}
 }

@@ -7,4 +7,11 @@
 	 <select id="selectWeatherHistory" resultType="com.quiz.lesson05.model.WeatherHistory">
 	 	SELECT * FROM `weather_history`
 	 </select>
+	 
+	 <insert id="insertWeatherHistory" parameterType="com.quiz.lesson05.model.WeatherHistory" useGeneratedKeys="true" keyProperty="id">
+	 	INSERT INTO `weather_history`
+	 	(
+	 		``
+	 	)
+	 </insert>
  </mapper>

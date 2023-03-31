@@ -10,4 +10,6 @@ import com.quiz.lesson05.model.WeatherHistory;
 public interface WeatherHistoryMapper {
 
 	public List<WeatherHistory> selectWeatherHistory();
+	
+	public void insertWeatherHistory(WeatherHistory weatherhistory);
 }

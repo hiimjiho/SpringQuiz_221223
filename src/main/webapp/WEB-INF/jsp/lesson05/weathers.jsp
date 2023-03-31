@@ -62,7 +62,7 @@
 				<tbody>
 					<c:forEach items="${weathers}" var="weather" >
 						<tr>
-							<td><fmt:formatDate value="${weather.date}" pattern="yyyy년 MM월 dd일"/></td>
+							<td><fmt:formatDate value="${weather.date}" pattern="yyyy년 M월 d일"/></td>
 						<c:choose>
 							<c:when test="${weather.weather == '맑음'}">
 								<td><img src="/img/sunny.jpg" alt="맑음"></td>
@@ -80,7 +80,7 @@
 							<td>${weather.temperatures}</td>
 							<td>${weather.precipitation}</td>
 							<td>${weather.microDust}</td>
-							<td>${weather.windSpeed}</td>
+							<td>${weather.windSpeed}km/h</td>
 						
 						</tr>
 					</c:forEach>
