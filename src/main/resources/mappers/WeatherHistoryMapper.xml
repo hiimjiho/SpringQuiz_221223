@@ -5,13 +5,42 @@
  
  <mapper namespace="com.quiz.lesson05.dao.WeatherHistoryMapper">
 	 <select id="selectWeatherHistory" resultType="com.quiz.lesson05.model.WeatherHistory">
-	 	SELECT * FROM `weather_history`
+	 	SELECT 
+	 		`id`
+	 		, `date`
+	 		, `weather`
+	 		, `temperatures`
+	 		, `precipitation`
+	 		, `microDust`
+	 		, `windSpeed`
+	 		, `createdAt`
+	 		, `updatedAt`
+	 	 FROM
+	 	 	 `weather_history`
 	 </select>
 	 
-	 <insert id="insertWeatherHistory" parameterType="com.quiz.lesson05.model.WeatherHistory" useGeneratedKeys="true" keyProperty="id">
+	 <insert id="insertWeatherHistory" parameterType="map">
 	 	INSERT INTO `weather_history`
 	 	(
-	 		``
+	 		`date`
+	 		, `weather`
+	 		, `temperatures`
+	 		, `precipitation`
+	 		, `microDust`
+	 		, `windSpeed` 
+	 		, `createdAt`
+	 		, `updatedAt`
+	 	)
+	 	VALUES
+	 	(
+	 		#{date}
+	 		, #{weather}
+	 		, #{temperatures}
+	 		, #{precipitation}
+	 		, #{microDust}
+	 		, #{windSpeed}
+	 		, NOW()
+	 		, NOW()
 	 	)
 	 </insert>
  </mapper>

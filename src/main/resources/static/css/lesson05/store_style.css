@@ -1,0 +1,11 @@
+@charset "UTF-8";
+
+header{height:120px;}
+footer{height:50px;}
+.headerfont{
+	color:white;
+	font-size:35px;
+	font-weight: bold;
+}
+.storeName{font-size:20px;}
+.helpcall{color:gray;}

@@ -34,7 +34,7 @@
 						<a href="/lesson05/weather_history"	class="nav-link menu-font">날씨</a>
 					</li>
 					<li class="nav-item">
-						<a href="/lesson05/add_weather_view" class="nav-link menu-font">날씨입력</a>
+						<a href="/lesson05/add_weather" class="nav-link menu-font">날씨입력</a>
 					</li>
 					<li class="nav-item">
 						<a href="#" class="nav-link menu-font">테마날씨</a>
@@ -49,42 +49,45 @@
 			<section class="weather-history col-10 mt-3 ml-5">
 				<h3>과거 날씨</h3>
 				<table class="table text-center">
-				<thead>
-					<tr>
-						<th>날짜</th>
-						<th>날씨</th>
-						<th>기온</th>
-						<th>강수량</th>
-						<th>미세먼지</th>
-						<th>풍속</th>
-					</tr>
-				</thead>
-				<tbody>
-					<c:forEach items="${weathers}" var="weather" >
+					<thead>
 						<tr>
-							<td><fmt:formatDate value="${weather.date}" pattern="yyyy년 M월 d일"/></td>
-						<c:choose>
-							<c:when test="${weather.weather == '맑음'}">
-								<td><img src="/img/sunny.jpg" alt="맑음"></td>
-							</c:when>
-							<c:when test="${weather.weather == '구름조금'}">
-								<td><img src="/img/partlyCloudy.jpg" alt="구름조금"></td>
-							</c:when>
-							<c:when test="${weather.weather == '흐림'}">
-								<td><img src="/img/cloudy.jpg" alt="흐림"></td>
-							</c:when>
-							<c:when test="${weather.weather == '비'}">
-								<td><img src="/img/rainy.jpg" alt="비"></td>
-							</c:when>
-						</c:choose>
-							<td>${weather.temperatures}</td>
-							<td>${weather.precipitation}</td>
-							<td>${weather.microDust}</td>
-							<td>${weather.windSpeed}km/h</td>
-						
+							<th>날짜</th>
+							<th>날씨</th>
+							<th>기온</th>
+							<th>강수량</th>
+							<th>미세먼지</th>
+							<th>풍속</th>
 						</tr>
-					</c:forEach>
-				</tbody>
+					</thead>
+					<tbody>
+						<c:forEach items="${weathers}" var="weather" >
+							<tr>
+								<td><fmt:formatDate value="${weather.date}" pattern="yyyy년 M월 d일"/></td>
+							<c:choose>
+								<c:when test="${weather.weather == '맑음'}">
+									<td><img src="/img/sunny.jpg" alt="맑음"></td>
+								</c:when>
+								<c:when test="${weather.weather == '구름조금'}">
+									<td><img src="/img/partlyCloudy.jpg" alt="구름조금"></td>
+								</c:when>
+								<c:when test="${weather.weather == '흐림'}">
+									<td><img src="/img/cloudy.jpg" alt="흐림"></td>
+								</c:when>
+								<c:when test="${weather.weather == '비'}">
+									<td><img src="/img/rainy.jpg" alt="비"></td>
+								</c:when>
+								<c:otherwise>
+										<td>${weather.weather}</td>
+								</c:otherwise>
+							</c:choose>
+								<td>${weather.temperatures}°C</td>
+								<td>${weather.precipitation}</td>
+								<td>${weather.microDust}</td>
+								<td>${weather.windSpeed}km/h</td>
+							
+							</tr>
+						</c:forEach>
+					</tbody>
 			</table>
 			</section>
 		</div>

@@ -46,6 +46,7 @@
 			<%-- 날씨 히스토리 --%>
 			<section class="weather-history col-10 mt-3 ml-5">
 				<h3>날씨 입력</h3>
+				<form method="post" action="/lesson05//add_weather">
 				<div class="d-flex justify-content-between mt-5">
 					<div class="d-flex align-items-center">
 						<div class="input-label">날짜</div>
@@ -106,6 +107,7 @@
 				<div class="text-right mt-4 mb-5">
 					<input type="submit" class="btn btn-success" value="저장">
 				</div>
+			</form>
 			</section>
 		</div>
 		<footer class="d-flex align-items-center">
@@ -129,16 +131,9 @@
              dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'] // 요일을 한글로 변경
              , dateFormat: 'yy-mm-dd'
          });
-
-         // 오늘 날짜로 이동하는 함수
-         $.datepicker._gotoToday = function(id) {
-             $(id).datepicker('setDate', new Date()).datepicker('hide').blur();
-         };
-
-
+ 
          $('#selectDate').datepicker({
              showButtonPanel: true // 오늘 버튼 노출
-             , minDate:0 // 오늘과 그 이후만 선택 가능
 
              // 시작일이 선택되는 순간 종료일의 minDate 변경
              , onSelect:function(dateText) {
