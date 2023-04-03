@@ -31,10 +31,10 @@
 				<%-- flex-column: 세로 메뉴 --%>
 				<ul class="nav flex-column mt-4">
 					<li class="nav-item">
-						<a href="/lesson05/weather_history"	class="nav-link menu-font">날씨</a>
+						<a href="/lesson05/quiz05/weather_history"	class="nav-link menu-font">날씨</a>
 					</li>
 					<li class="nav-item">
-						<a href="/lesson05/add_weather" class="nav-link menu-font">날씨입력</a>
+						<a href="/lesson05/quiz05/add_weather_view" class="nav-link menu-font">날씨입력</a>
 					</li>
 					<li class="nav-item">
 						<a href="#" class="nav-link menu-font">테마날씨</a>

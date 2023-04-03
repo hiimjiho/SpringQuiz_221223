@@ -20,11 +20,13 @@
 		<section class="">
 		<h1></h1>
 			<c:forEach items="${review}" var="reviews">
-				<div class="border border-info p-3 mt-3"><a href="/lesson05/storeReview">
-					<span class="storeName"><b>${store.name}</b></span><br>
-					<span>전화 번호:${store.phoneNumber}</span><br>
-					<span>주소: ${store.address}</span></a>
-				</div>
+				<c:forEach items="${stores}" var="store">
+					<div class="border border-info p-3 mt-3">
+						<span class="storeName"><b>${store.name}</b></span><br>
+						<span>전화 번호:${reviews.userName}</span><br>
+						<span>주소: ${reviews.point}</span>
+					</div>
+					</c:forEach>
 			</c:forEach>
 		</section>
 		<footer class="">

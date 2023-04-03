@@ -20,7 +20,7 @@
 		<section class="">
 		<h1>우리 동네 가게</h1>
 			<c:forEach items="${stores}" var="store">
-				<div class="border border-info p-3 mt-3"><a href="/lesson05/storeReview">
+				<div class="border border-info p-3 mt-3"><a href="/lesson02/quiz/store_review">
 					<span class="storeName"><b>${store.name}</b></span><br>
 					<span>전화 번호:${store.phoneNumber}</span><br>
 					<span>주소: ${store.address}</span></a>

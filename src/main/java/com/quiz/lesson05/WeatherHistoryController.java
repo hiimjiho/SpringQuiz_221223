@@ -25,7 +25,12 @@ public class WeatherHistoryController {
 			Model model) {
 		List<WeatherHistory> weatherHistoryList = weatherHistoryBO.getWeatherHistory();
 		model.addAttribute("weathers", weatherHistoryList);
-		return "lesson05/weathers";
+		return "lesson05/weather_history";
+	}
+	
+	@RequestMapping("/add_weather_view")
+	public String addWeatherView() {
+		return "lesson05/add_weather";
 	}
 	
 	@PostMapping("/add_weather")
@@ -44,7 +49,7 @@ public class WeatherHistoryController {
 		// model X
 		
 		// redirect : 목록 페이지로
-		return "redirect:/lesson05/weather_history";
+		return "redirect:/lesson05/quiz05/weather_history";
 	}
 	
 }
