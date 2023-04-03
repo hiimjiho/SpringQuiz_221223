@@ -36,7 +36,7 @@ public class Lesson06Controller {
 		return "성공";
 	}
 	
-	@PostMapping("/site_view")
+	@RequestMapping("/site_view")
 	public String siteView(Model model) {
 		List<Site> favoriteSite = siteBO.getSite();
 		model.addAttribute("favorite", favoriteSite);

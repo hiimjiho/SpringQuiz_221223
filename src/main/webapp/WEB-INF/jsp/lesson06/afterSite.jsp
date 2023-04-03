@@ -1,7 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>        
@@ -24,11 +22,11 @@
 				<th>이름</th>
 				<th>주소</th>
 			</tr>
-		<c:forEach items="${favorite}" var="site">
+		<c:forEach items="${favorite}" var="site" varStatus="status">
 			<tr>
-				<td>${site.id}</td>
+				<td>${status.count}</td>
 				<td>${site.name}</td>
-				<td>${site.url}</td>
+				<td><a href="${site.url}">${site.url}</a></td>
 			</tr>
 		</c:forEach>
 		</table>

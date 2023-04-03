@@ -26,15 +26,23 @@
 </body>
 <script>
 	$(document).ready(function(){
-		$("#addBtn").click(function(){
+		$("#addBtn").on("click", function(){
 			let name = $("#name").val().trim();
 			let url = $("#url").val().trim();
 			
 			if(!name){
 				alert("이름을 입력하세요");
+				return;
 			}
+			
 			if(!url){
 				alert("주소를 입력하세요");
+				return;
+			}
+			
+			if(!url.startsWith('http')){
+				alert("http혹은 https 프로토콜을 입력해주세요");
+				return;
 			}
 			
 			console.log(name);
@@ -44,12 +52,14 @@
 				// request
 				type:"POST"
 				, url:"/lesson06/quiz01/add_site"
-				, data:{name:"name", url:"url"}
-				, success:function(data){
+				, data:{"name":name, "url":url}
+			
+				, success:function(data){	// data: response 결과 응답
 					if(data == "성공"){
-						location.href="/lesson06/quiz01/site_view";
-					}
+					location.href= "/lesson06/quiz01/site_view";
 				}
+			}
+				
 			});
 		});
 	});
