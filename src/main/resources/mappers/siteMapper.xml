@@ -32,4 +32,12 @@
 			`site`
  	</select>
  
+ 	<select id="exsitSiteByUrl" parameterType="String" resultType="boolean">
+ 		SELECT
+ 			COUNT(*)
+ 		FROM
+ 			`site`
+ 		WHERE
+ 			`url` = #{url}
+ 	</select>
  </mapper>

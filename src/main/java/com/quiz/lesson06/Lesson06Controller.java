@@ -1,6 +1,8 @@
 package com.quiz.lesson06;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -29,11 +31,25 @@ public class Lesson06Controller {
 	
 	@PostMapping("/add_site")
 	@ResponseBody
-	public String addSite(
+	public Map<String, Object> addSite(
 			@RequestParam("name") String name,
 			@RequestParam("url") String url) {
-		siteBO.addSite(name, url);
-		return "성공";
+		//  "{"code":1, "result":"성공"}"
+		//  "{"code":500, "errorMessage":"추가하는데 실패했습니다."}"
+		
+		// insert
+		
+		Map<String, Object> result = new HashMap<>();
+		int rowCount = siteBO.addSite(name, url);
+		if(rowCount > 0) {
+			result.put("code", 1);
+			result.put("result", "성공");
+		} else {
+			result.put("code", 500);
+			result.put("errorMessage", "데이터를 추가하는데 실패했습니다.");
+		}
+	
+		return result;	// JSON String 
 	}
 	
 	@RequestMapping("/site_view")
@@ -41,5 +57,14 @@ public class Lesson06Controller {
 		List<Site> favoriteSite = siteBO.getSite();
 		model.addAttribute("favorite", favoriteSite);
 		return "lesson06/afterSite";
+	}
+	
+	@ResponseBody
+	@GetMapping("/is_duplication")
+	public Map<String, Boolean> isDuplication(
+			@RequestParam("url") String url){
+		Map<String, Boolean> result = new HashMap<>();
+		result.put("isDuplication", siteBO.exsitSiteByUrl(url));
+		return result;
 	}
 }

@@ -12,11 +12,14 @@
 <%--AJAX를 사용하려면 jquery원본 필요 --%>
 <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+<style>
+	a{color:black;}
+</style>
 </head>
 <body>
 	<div class="container">
 	<h1>즐겨찾기 목록</h1>
-		<table class="table">
+		<table class="table text-center">
 			<tr>
 				<th>No</th>
 				<th>이름</th>

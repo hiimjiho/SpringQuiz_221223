@@ -13,11 +13,16 @@ public class SiteBO {
 	@Autowired
 	private SiteMapper siteMapper;
 	
-	public void addSite(String name, String url) {
-		siteMapper.insertSite(name, url);
+	//input: name, url		output: 성공된 행의 개수
+	public int addSite(String name, String url) {
+		return siteMapper.insertSite(name, url);
 	}
 	
 	public List<Site> getSite(){
 		return siteMapper.selectSite();
+	}
+	
+	public boolean exsitSiteByUrl(String url) {
+		return siteMapper.exsitSiteByUrl(url);
 	}
 }

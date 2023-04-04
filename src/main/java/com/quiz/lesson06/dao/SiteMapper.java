@@ -10,9 +10,11 @@ import com.quiz.lesson06.model.Site;
 @Repository
 public interface SiteMapper {
 	
-	public void insertSite(
+	public int insertSite(
 			@Param("name") String name,
 			@Param("url")String url);
 	
 	public List<Site> selectSite();
+	
+	public boolean exsitSiteByUrl(String url);
 }
