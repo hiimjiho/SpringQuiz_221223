@@ -75,7 +75,7 @@
 				
 			});
 		});
-		$("#nameCheck").on("click", function(){
+			$("#nameCheck").on("click", function(){
 			
 			$("#nameStatusArea").empty();
 			let url = $("#url").val().trim();

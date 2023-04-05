@@ -27,7 +27,7 @@
 			</tr>
 		<c:forEach items="${favorite}" var="site" varStatus="status">
 			<tr>
-				<td>${status.count}</td>
+				<td>${site.id}</td>
 				<td>${site.name}</td>
 				<td><a href="${site.url}">${site.url}</a></td>
 			</tr>
