@@ -13,5 +13,15 @@ public class BookingController {
 		return "lesson06/pension";
 	}
 	
-	@RequestMapping("")
+// 	http://localhost/lesson06/quiz03/order_list
+	@GetMapping("/order_list")
+	public String orderList() {
+		return "lesson06/bookingList";
+	}
+	
+// 	http://localhost/lesson06/quiz03/booking_order
+	@GetMapping("/booking_order")
+	public String bookigOrder() {
+		return "lesson06/bookingOrder";
+	}
 }
