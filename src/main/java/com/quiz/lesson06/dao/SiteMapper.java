@@ -17,4 +17,8 @@ public interface SiteMapper {
 	public List<Site> selectSite();
 	
 	public boolean exsitSiteByUrl(String url);
+	
+	public Site selectSiteByUrl(String url);
+	
+	public int deleteSiteById(int id);
 }

@@ -25,4 +25,14 @@ public class SiteBO {
 	public boolean exsitSiteByUrl(String url) {
 		return siteMapper.exsitSiteByUrl(url);
 	}
+	
+	// input: url output: 1개행 또는 0개행 Favorite
+	public Site getSiteByUrl(String url) {
+		return siteMapper.selectSiteByUrl(url);
+	}
+	
+	// input : id output: int
+	public int deleteSiteById(int id) {
+		return siteMapper.deleteSiteById(id);
+	}
 }

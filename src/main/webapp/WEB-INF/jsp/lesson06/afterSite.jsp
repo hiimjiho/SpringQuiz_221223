@@ -24,15 +24,59 @@
 				<th>No</th>
 				<th>이름</th>
 				<th>주소</th>
+				<th>삭제</th>
 			</tr>
 		<c:forEach items="${favorite}" var="site" varStatus="status">
 			<tr>
 				<td>${site.id}</td>
 				<td>${site.name}</td>
 				<td><a href="${site.url}">${site.url}</a></td>
+				<td>
+					<%-- <button type="button" class="del-btn btn btn-danger" value="${site.id}">삭제</button> --%>
+					<button type="button" class="del-btn btn btn-danger" data-site-id="${site.id}">삭제</button>
+				</td>
 			</tr>
 		</c:forEach>
 		</table>
 	</div>
+<script>
+	$(document).ready(function(){
+		//(1)
+		/*
+		$('.del-btn').on("click", function(e){
+			let id = e.target.value
+			// let id = $(this).val();
+		});
+		*/
+		
+		
+		//(2) data 활용
+		// data-site-id 태그에 값을 심어 놓는다.		data- 그 뒤부터는 이름을 직접 짓는다.(대문자가 들어가면 안됨)
+		// 스크립트: $(this).data('site-id');
+		$('.del-btn').on("click", function(){
+			let id = $(this).data('site-id');
+			// alert(id);
+			
+			ajax({
+				// request
+				type:"post"
+				, url:"/lesson06/quiz01/delete_site"
+				, data:{"id":id}
+			
+				// response
+				, success:function(data){
+					if(data.code == 1){
+						location.reload(true);	// 새로고침
+					} else{
+						alert(data.errorMessage);
+					}
+				}
+				, error:function(request, status, error){
+					alert("삭제하는데 실패했습니다 관리자에게 문의해주세요.");
+				}
+			});
+		});
+	});
+</script>
 </body>
 </html>

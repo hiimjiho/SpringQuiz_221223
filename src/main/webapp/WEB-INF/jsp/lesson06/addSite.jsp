@@ -23,13 +23,46 @@
 					<input type="text" id="url" class="col-10">
 					<button type="button" class="btn btn-primary ml-2" id="nameCheck">중복확인</button>
 				</div>
-				<small id="nameStatusArea"></small>
+				<small id="duplicationText" class="text-danger d-none">중복</small>
+				<small id="availableText" class="text-success d-none">사용 가능</small>
 			</div>
 			<input type="button" id="addBtn" value="추가" class="btn btn-success col-12 mt-3">
 	</div>
 </body>
 <script>
 	$(document).ready(function(){
+		
+		$("#nameCheck").on("click", function(){
+			let url = $("#url").val().trim();
+			if (url ==""){
+				alert("검사할 url을 입력하세요");
+				return;
+			}
+			
+			$.ajax({	
+				type:"post"
+				, url: "/lesson06/quiz01/is_duplication_url"
+				, data:{"url":url}
+				
+				// response
+				,success:function(data) {
+					// {"isDuplication":true}
+					if(data.isDuplication){
+						// 중복
+						$("#duplicationText").removeClass("d-none");
+						$("#availableText").addClass("d-none");
+					} else{	
+						// 중복 아님(사용 가능)
+						$("#duplicationText").addClass("d-none");
+						$("#availableText").removeClass("d-none");
+					}
+				}
+				, error:function(request, status, error){
+					alert("중복확인에 실패했습니다 관리자에게 문의해주세요");
+				}
+			});
+		});
+		
 		$("#addBtn").on("click", function(){
 			let name = $("#name").val().trim();
 			let url = $("#url").val().trim();

@@ -1,0 +1,18 @@
+@charset "UTF-8";
+
+header{height:100px;}
+
+nav{height:40px;}
+
+section{height:700px;}
+
+footer{height:100px;}
+
+.footer-font{color:gray;}
+
+.contents{height:200px;}
+
+.order-font{
+	color:white;
+	font-size:30px;
+}

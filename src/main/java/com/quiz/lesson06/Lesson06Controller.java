@@ -67,4 +67,43 @@ public class Lesson06Controller {
 		result.put("isDuplication", siteBO.exsitSiteByUrl(url));
 		return result;
 	}
+	
+	// 중복 url 체크 - ajax통신
+	@ResponseBody
+	@PostMapping("is_duplication_url")
+	public Map<String, Boolean> isDuplicationUrl(
+			@RequestParam("url") String url){
+		Map<String, Boolean> result = new HashMap<>();
+		// select
+		Site site = siteBO.getSiteByUrl(url);
+		if(site != null) {
+			result.put("isDuplication", true);
+		} else {
+			result.put("isDuplication", false);
+		}
+		return result;
+	}
+	
+	// id로 삭제를 하는 API
+	// AJAX로 요청
+	@ResponseBody
+	@PostMapping("/delete_site")
+	public Map<String, Object> deleteSite(
+			@RequestParam("id") int id){
+		
+		// delete
+		int rowCount = siteBO.deleteSiteById(id);
+		
+		Map<String, Object> result = new HashMap<>();
+		
+		if (rowCount > 0) {
+			result.put("code", 1);
+			result.put("result", "성공");
+		} else {
+			result.put("code", 500); // 500: 에러
+			result.put("errorMessage", "삭제하는데 실패했습니다");
+		}
+		
+		return result;
+	}
 }
