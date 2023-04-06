@@ -49,7 +49,7 @@
 
 					<!-- 버튼 -->
 					<div class="text-right mt-3 mr-3">
-						<button type="button" class="btn btn-success submit-btn">조회하기</button>
+						<button type="button" class="btn btn-success submit-btn" id="searchBtn">조회하기</button>
 					</div>
 				</div>
 			</section>
@@ -71,5 +71,57 @@
 			</div>
 		</footer>
 	</div>
+<script>
+	$(document).ready(function(){
+		$("#searchBtn").on("click", function(){
+			let name = $("#name").val().trim();
+			let phoneNumber = $("#phoneNumber").val().trim();
+			
+			if (name == ""){
+				alert("이름을 입력해주세요");
+				return;
+			}
+			if (phoneNumber == ""){
+				alert("전화번호를 입력해주세요");
+				return;
+			}
+			
+			// ajax 요청
+			$.ajax({
+				url:"/lesson06/quiz03/search_booking"
+				, data:{"name":name, "phoneNumber":phoneNumber,}
+				, success:function(data){
+					if(data.code == 1){
+						//data.booking.name
+						alert("이름: " + data.booking.name + "\n날짜: " + data.booking.date.slice(0, 10)
+								+ "\n일수: " + data.booking.day
+								+ "\n인원: " + data.booking.headcount
+								+ "\n상태: " + data.booking.state);
+					} else{
+						alert("예약 내역이 없습니다.");
+					}
+				}
+				, error:function(request, status, error){
+					alert("예약 내역을 조회하는데 실패했습니다");
+				}
+			});
+		});
+		
+		// 배너 순회
+		let bannerList = ["/img/test06_banner1.jpg", "/img/test06_banner2.jpg", "/img/test06_banner3.jpg", "/img/test06_banner4.jpg"];
+		let currentIndex = 1;
+		
+		setInterval(function() {
+			$('#bannerImage').attr('src', bannerList[currentIndex]);
+					
+			currentIndex++;
+			// 4	0 1 2 3		4
+			if(currentIndex == bannerList.length) {
+				currentIndex = 0;
+			}
+			console.log(console.log);
+		}, 3000);
+	});
+</script>
 </body>
 </html>

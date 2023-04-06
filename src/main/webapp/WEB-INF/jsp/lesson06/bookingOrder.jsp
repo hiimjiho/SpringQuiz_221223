@@ -21,8 +21,12 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
 	crossorigin="anonymous"></script>
-<link rel="stylesheet" type="text/css"
-	href="/css/lesson06/pension_style.css">
+	
+<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>     
+  
+<link rel="stylesheet" type="text/css" href="/css/lesson06/pension_style.css">
 <body>
 	<div id="wrap" class="container">
 		<header class="text-center">
@@ -79,5 +83,70 @@
 			</div>
 		</footer>
 	</div>
+<script>
+$(document).ready(function() {
+	$('input[name=date]').datepicker({
+		dateFormat:"yy-mm-dd"
+		, minDate:0 // 오늘부터 그 뒤 선택
+	});
+	
+	// 예약하기 버튼
+	$('#reservationBtn').on('click', function() {
+		let name = $("input[name=name]").val().trim();
+		let date = $("input[name=date]").val().trim();
+		let day = $("input[name=day]").val().trim();
+		let headcount = $("input[name=headcount]").val().trim();
+		let phoneNumber = $("input[name=phoneNumber]").val().trim();
+		
+		if(name == ""){
+			alert("이름을 입력하세요");
+			return;
+		}
+		if(date == ""){
+			alert("날짜를 선택하세요");
+			return;
+		}
+		if(day == ""){
+			alert("숙박일을 입력하세요");
+			return;
+		}
+		if(isNaN(day)){ //숫자가 아닌 값 들어오면 true
+			alert("숙박일수는 숫자만 입력 가능합니다.");
+			return;
+		}
+		if(headcount == ""){
+			alert("숙박인원을 입력하세요");
+			return;
+		}
+		if(isNaN(headcount)){
+			alert("숙박인원은 숫자만 입력 가능합니다");
+			return;
+		}
+		if(phoneNumber == ""){
+			alert("전화번호를 입력해주세요");
+			return;
+		}
+		if(isNaN(phoneNumber)){
+			alert("전화번호는 숫자만 입력가능합니다");
+			return;
+		}
+		
+		$.ajax({
+			type="post"
+			, url:"/lesson06/quiz03/add_booking"
+			, data:{"name":name, "date":date, "day":day, "headcount":headcount, "phoneNumber":phoneNumber}
+			, success:function(data) {
+				if(data.result == "성공") {
+					alert("에약 되었습니다.");
+					location.href= "/lesson06/quiz03/order_list";
+				}
+			}
+			, error:function(request, status, error) {
+				alert("예약하는데 실패했습니다.");
+			}
+		});
+	});
+});
+</script>
 </body>
 </html>
