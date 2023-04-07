@@ -36,9 +36,9 @@
 					class="nav-link menu-link-text text-white">팬션소개</a></li>
 				<li class="nav-item"><a href="#"
 					class="nav-link menu-link-text text-white">객실보기</a></li>
-				<li class="nav-item"><a href="#"
+				<li class="nav-item"><a href="/lesson06/quiz03/booking_order"
 					class="nav-link menu-link-text text-white">예약하기</a></li>
-				<li class="nav-item"><a href="#"
+				<li class="nav-item"><a href="/lesson06/quiz03/order_list"
 					class="nav-link menu-link-text text-white">예약목록</a></li>
 			</ul>
 		</nav>
@@ -60,7 +60,7 @@
 				<c:forEach items="${bookingList}" var="booking">
 					<tr>
 						<td>${booking.name}</td>
-						<td><fmt:formatDate value="${booking.date}" pattern=""/></td>
+						<td><fmt:formatDate value="${booking.date}" pattern="yyyy년 M월 d일"/></td>
 						<td>${booking.day}</td>
 						<td>${booking.headcount}</td>
 						<td>${booking.phoneNumber}</td>
@@ -102,9 +102,9 @@
 			
 			$.ajax({
 				// request
-				type="delete"	// POST 계열, 브라우저로 직접 치고 못들어감
-				, url="/lesson06/quiz03/delete_booking"
-				, date={"id":id}
+				type:"delete"	// POST 계열, 브라우저로 직접 치고 못들어감
+				, url:"/lesson06/quiz03/delete_booking"
+				, data:{"id":id}
 				
 				// response
 				, success:function(data){
@@ -113,7 +113,7 @@
 						location.reload(true);
 					}
 				}
-				. error:function(request, status, error){
+				, error:function(request, status, error){
 					alert("삭제하는데 실패했습니다.");
 				}
 			});

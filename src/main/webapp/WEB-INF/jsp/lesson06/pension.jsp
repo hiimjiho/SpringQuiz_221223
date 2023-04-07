@@ -19,8 +19,8 @@
                 <ul class="nav nav-fill menu-bg"> <!-- nav nav-fill 세트. 메뉴를 nav에 가득 채운다. -->
                     <li class="nav-item"><a href="#" class="nav-link menu-link-text text-white">팬션소개</a></li>
                     <li class="nav-item"><a href="#" class="nav-link menu-link-text text-white">객실보기</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link menu-link-text text-white">예약하기</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link menu-link-text text-white">예약목록</a></li>
+                    <li class="nav-item"><a href="/lesson06/quiz03/booking_order" class="nav-link menu-link-text text-white">예약하기</a></li>
+                    <li class="nav-item"><a href="/lesson06/quiz03/order_list" class="nav-link menu-link-text text-white">예약목록</a></li>
                 </ul>
             </nav>
 		<section class="banner bg-info">
