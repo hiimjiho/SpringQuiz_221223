@@ -21,6 +21,7 @@ public class Lesson02QuizController {
 	StoreBO storeBO;
 	NewReviewBO newReviewBO;
 	
+	// http://localhost/lesson02/quiz/store_view
 	@GetMapping("/store_view")
 	public String storeView(Model model) {
 		List<Store> storeList  = storeBO.getStoreList();
@@ -29,7 +30,7 @@ public class Lesson02QuizController {
 		return "lesson05/store";
 	}
 	
-	@RequestMapping("/store_review")
+	@GetMapping("/store_review")
 	public String storeReview(
 			@RequestParam("storeId") int storeId,
 			@RequestParam("name") String name,
